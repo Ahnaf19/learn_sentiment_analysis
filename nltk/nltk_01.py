@@ -1,5 +1,6 @@
 from nltk.corpus import twitter_samples
 from nltk.tag import pos_tag_sents
+from nltk import word_tokenize
 
 # following https://www.digitalocean.com/community/tutorials/how-to-work-with-language-data-in-python-3-using-the-natural-language-toolkit-nltk
 
@@ -28,9 +29,16 @@ tweets_tokens = twitter_samples.tokenized(
     'positive_tweets.json')  # list in a list
 # so we have tokens of each tweets as a list in a list. we can tag the tokens with the appropriate Part of Speech (POS) tags.
 
-# single sentence tokenizing
+# single sentence from json tokenizing
 single_tweet_tokens = twitter_samples.tokenized('positive_tweets.json')[0]
 print(single_tweet_tokens)
+
+# single sentence tokenizing
+# sentece = "Hi there! My name is Khan and I am happy to be here!"
+# single_tokens = word_tokenize(sentece)
+# print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
+# print(single_tokens)
+
 # .tokenized() method returns special characters such as @ and _. these characters can be removed through regular expression RE.
 
 # TAGGING SENCTENCES

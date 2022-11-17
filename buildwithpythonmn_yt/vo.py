@@ -4,6 +4,7 @@ import string
 from nltk.corpus import stopwords
 from collections import Counter
 import matplotlib.pyplot as plt
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
 
 def remove_stop_words(tokenized_words, stop_words):
@@ -29,18 +30,18 @@ text = text.lower()
 # str2: specifies the list of characters with which the characters need to be replaced
 # str3: specifies the list of characters that need to be deleted
 cleaned_text = text.translate(str.maketrans('', '', string.punctuation))
-print(cleaned_text)  # removes punctuations from text
+# print(cleaned_text)  # removes punctuations from text
 
 
 # TOKENIZATION
 
 tokenized_words = cleaned_text.split()
-print(tokenized_words)
+# print(tokenized_words)
 
 stop_words = stopwords.words('english')
 final_words = remove_stop_words(tokenized_words, stop_words)
 
-print(final_words)
+# print(final_words)
 
 # NLP Emotion Algorithm
 
@@ -65,6 +66,14 @@ with open('emotions.txt', 'r') as file:
 print(emotion_list)
 w = Counter(emotion_list)
 print(w)
+
+
+def sentiment_analyze(sentiment_text):
+    score = SentimentIntensityAnalyzer().polarity_scores(sentiment_text)
+    print(f'score of cleaned text: {score}')
+
+
+sentiment_analyze(cleaned_text)
 
 # Plotting the emotions on the graph
 
